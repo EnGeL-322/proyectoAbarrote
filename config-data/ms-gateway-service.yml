@@ -7,45 +7,47 @@ spring:
 
   cloud:
     gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+              lower-case-service-id: true
 
-      routes:
-        - id: ms-catalogo-service
-          uri: lb://ms-catalogo-service
-          predicates:
-            - Path=/products/**
-          filters:
-            - name: AuthFilter
+          routes:
+            - id: ms-catalogo-service
+              uri: lb://ms-catalogo-service
+              predicates:
+                - Path=/products/**
+              filters:
+                - name: AuthFilter
 
-        - id: ms-compra-service
-          uri: lb://ms-compra-service
-          predicates:
-            - Path=/purchases/**
-          filters:
-            - name: AuthFilter
+            - id: ms-compra-service
+              uri: lb://ms-compra-service
+              predicates:
+                - Path=/purchases/**
+              filters:
+                - name: AuthFilter
 
-        - id: ms-inventario-service
-          uri: lb://ms-inventario-service
-          predicates:
-            - Path=/inventory/**
-          filters:
-            - name: AuthFilter
+            - id: ms-inventario-service
+              uri: lb://ms-inventario-service
+              predicates:
+                - Path=/inventory/**
+              filters:
+                - name: AuthFilter
 
-        - id: ms-venta-service
-          uri: lb://ms-venta-service
-          predicates:
-            - Path=/sales/**
-          filters:
-            - name: AuthFilter
+            - id: ms-venta-service
+              uri: lb://ms-venta-service
+              predicates:
+                - Path=/sales/**
+              filters:
+                - name: AuthFilter
 
-        - id: ms-auth-service
-          uri: lb://ms-auth-service
-          predicates:
-            - Path=/auth/**
-          filters: []
+            - id: ms-auth-service
+              uri: lb://ms-auth-service
+              predicates:
+                - Path=/auth/**
+              filters: []
 
 eureka:
   client:
