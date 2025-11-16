@@ -12,14 +12,7 @@ spring:
           enabled: true
           lower-case-service-id: true
 
-      # 💡 CORS global habilitado (igual que el del docente)
-      globalcors:
-        corsConfigurations:
-          '[/**]':
-            allowedOrigins: "http://localhost:4200"
-            allowedMethods: "*"
-            allowedHeaders: "*"
-            allowCredentials: true
+
 
       routes:
         - id: ms-catalogo-service
